@@ -18,7 +18,7 @@ Intermediate Features
 Installation
 
 Step1:-
-git clone https://github.com/your-username/task-manager.gi
+git clone  https://github.com/Priyanshu2455/TaskManager.git
 Step2:-
 cd task-manager
 Step3:-
