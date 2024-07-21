@@ -41,19 +41,30 @@ const TaskManager = () => {
     return task.priority === filter;
   });
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="task-manager">
+    <div className={darkMode ? `dark-mode` : `task-manager`}>
+      <div style={{display:"flex" , justifyContent:"end",marginTop : "5px" , marginBottom:"5px"}} >
+        <button className="button" onClick={toggleDarkMode}>
+          {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        </button>
+      </div>
       <div className="header">
         <h1>Task List View</h1>
-        <button onClick={() => dispatch({ type: 'EDIT_TASK', payload: {} })}>
+        <button onClick={() => dispatch({ type: "EDIT_TASK", payload: {} })}>
           Add New Task
         </button>
       </div>
       <div className="task-filter">
-        {['All', 'High', 'Medium', 'Low', 'Done'].map(f => (
+        {["All", "High", "Medium", "Low", "Done"].map((f) => (
           <button
             key={f}
-            className={filter === f ? 'active' : ''}
+            className={filter === f ? "active" : ""}
             onClick={() => setFilter(f)}
           >
             {f}
@@ -62,10 +73,7 @@ const TaskManager = () => {
       </div>
       <TaskList tasks={filteredTasks} dispatch={dispatch} />
       {state.editingTask && (
-        <TaskEditModal
-          task={state.editingTask}
-          dispatch={dispatch}
-        />
+        <TaskEditModal task={state.editingTask} dispatch={dispatch} />
       )}
     </div>
   );

@@ -8,6 +8,31 @@
     border-radius: 10px;
     overflow: hidden;
   }
+  .button{
+    background: #fff;
+    color: #005a4e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background: #00453a;
+    color: #fff;
+  }
+
+  .dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    /* background-color: #fff; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
   
   .header {
     display: flex;
