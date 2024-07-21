@@ -1,0 +1,106 @@
+/* TaskManager.css */
+.task-manager {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #005a4e;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  
+  .header button {
+    background: #fff;
+    color: #005a4e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .header button:hover {
+    background: #00453a;
+    color: #fff;
+  }
+  
+  .task-filter {
+    display: flex;
+    justify-content: space-around;
+    background-color: #eaeaea;
+    padding: 10px;
+  }
+  
+  .task-filter button {
+    background: none;
+    border: none;
+    color: #005a4e;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .task-filter button.active {
+    color: #ff5c5c;
+  }
+  
+  .task-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .task-item:hover {
+    background-color: #f7f7f7;
+  }
+  
+  .task-item .title {
+    font-weight: bold;
+  }
+  
+  .task-item .date {
+    font-size: 0.8em;
+    color: #888;
+  }
+  
+  .task-item .priority {
+    display: flex;
+    align-items: center;
+  }
+  
+  .task-item .priority span {
+    margin-right: 5px;
+  }
+  
+  .task-item .actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .task-item .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  
