@@ -25,6 +25,13 @@ function taskReducer(state, action) {
         ),
         editingTask: null,
       };
+    case 'MARK_DONE':
+      return {
+        ...state,
+        tasks: state.tasks.map(task =>
+          task.id === action.payload ? { ...task, done: true } : task
+        ),
+      };
     case 'CANCEL_EDIT':
       return { ...state, editingTask: null };
     default:
@@ -32,14 +39,20 @@ function taskReducer(state, action) {
   }
 }
 
+
 const TaskManager = () => {
   const [state, dispatch] = useReducer(taskReducer, initialState);
   const [filter, setFilter] = useState('All');
+  const [search, setSearch] = useState('');
+
 
   const filteredTasks = state.tasks.filter(task => {
-    if (filter === 'All') return true;
-    return task.priority === filter;
+    if (filter === 'Done') return task.done;
+    if (task.done) return false; // Exclude done tasks from other filters
+    if (filter !== 'All' && task.priority !== filter) return false; 
+    return task.title.toLowerCase().includes(search.toLowerCase());
   });
+  
 
   const [darkMode, setDarkMode] = useState(false);
 
@@ -49,22 +62,28 @@ const TaskManager = () => {
 
   return (
     <div className={darkMode ? `dark-mode` : `task-manager`}>
-      <div style={{display:"flex" , justifyContent:"end",marginTop : "5px" , marginBottom:"5px"}} >
-        <button className="button" onClick={toggleDarkMode}>
-          {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-        </button>
-      </div>
+    <div style={{display:"flex" , justifyContent:"end",marginTop : "5px" , marginBottom:"5px"}} >
+      <button className="button" onClick={toggleDarkMode}>
+        {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      </button>
+    </div>
       <div className="header">
         <h1>Task List View</h1>
-        <button onClick={() => dispatch({ type: "EDIT_TASK", payload: {} })}>
+        <button onClick={() => dispatch({ type: 'EDIT_TASK', payload: {} })}>
           Add New Task
         </button>
       </div>
+      <input
+        type="text"
+        placeholder="Search tasks"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
       <div className="task-filter">
-        {["All", "High", "Medium", "Low", "Done"].map((f) => (
+        {['All', 'High', 'Medium', 'Low', 'Done'].map(f => (
           <button
             key={f}
-            className={filter === f ? "active" : ""}
+            className={filter === f ? 'active' : ''}
             onClick={() => setFilter(f)}
           >
             {f}
@@ -73,10 +92,14 @@ const TaskManager = () => {
       </div>
       <TaskList tasks={filteredTasks} dispatch={dispatch} />
       {state.editingTask && (
-        <TaskEditModal task={state.editingTask} dispatch={dispatch} />
+        <TaskEditModal
+          task={state.editingTask}
+          dispatch={dispatch}
+        />
       )}
     </div>
   );
+  
 };
 
 export default TaskManager;

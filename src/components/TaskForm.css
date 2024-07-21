@@ -1,0 +1,36 @@
+/* TaskForm.css */
+.task-form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .task-form input,
+  .task-form textarea,
+  .task-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
+  .task-form button {
+    background-color: #005a4e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .task-form button:hover {
+    background-color: #00453a;
+  }
+  
+  .task-form .cancel-button {
+    background-color: #ff5c5c;
+    color: #fff;
+  }
+  
