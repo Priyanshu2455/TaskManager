@@ -20,7 +20,7 @@ Installation
 Step1:-
 git clone  https://github.com/Priyanshu2455/TaskManager.git
 Step2:-
-cd task-manager
+cd TaskManager
 Step3:-
 npm install
 step4:-
