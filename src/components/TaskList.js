@@ -15,7 +15,7 @@ const TaskList = ({ tasks, dispatch }) => {
           <span title={task.description}> {task.description.length > 25 ? `${task.description.slice(0, 20)}...` : task.description}</span>
           </div>
           <div style={{marginLeft:"5px"}} className="priority">
-            <span>{task.priority}</span>  
+            <span style={{fontWeight:"bold"}} >{task.priority}</span>  
           </div>
           <div className="actions">
             <button onClick={() => dispatch({ type: 'EDIT_TASK', payload: task })}>

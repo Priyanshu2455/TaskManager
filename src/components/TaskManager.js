@@ -77,7 +77,7 @@ const TaskManager = () => {
         type="text"
         placeholder="Search tasks"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value.trim())}
       />
       <div className="task-filter">
         {['All', 'High', 'Medium', 'Low', 'Done'].map(f => (
